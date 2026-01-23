@@ -1,0 +1,19 @@
+version: 2
+registries:
+  github-gems:
+    type: rubygems-server
+    url: https://rubygems.pkg.github.com/sevgibson
+    token: ${{ secrets.GH_PRIVATE_REPO_TOKEN }}
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    registries:
+      - github-gems
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
